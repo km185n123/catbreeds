@@ -1,24 +1,34 @@
 import 'package:catbreeds/features/detailbreed/presentation/widgets/breed_headline.dart';
+import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HeaderDetail extends StatelessWidget {
-  const HeaderDetail({super.key});
+  final CatBreed breed;
+
+  const HeaderDetail({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {
+    final String imageUrl = breed.referenceImageId != null
+        ? 'https://cdn2.thecatapi.com/images/${breed.referenceImageId}.jpg'
+        : 'assets/images/gato_bengala.jpg';
+
+    final ImageProvider imageProvider = imageUrl.startsWith('http')
+        ? NetworkImage(imageUrl)
+        : AssetImage(imageUrl) as ImageProvider;
+
     return Stack(
       children: [
         // Image
         Container(
           height: 400,
           width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/gato_bengala.jpg'),
-              fit: BoxFit.cover,
+          decoration: BoxDecoration(
+            image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(32),
             ),
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
           ),
         ),
         // Gradient for Text Readability/Theme blending
@@ -77,7 +87,7 @@ class HeaderDetail extends StatelessWidget {
           bottom: 24,
           left: 24,
           right: 24,
-          child: const BreedHeadline(),
+          child: BreedHeadline(breed: breed),
         ),
       ],
     );

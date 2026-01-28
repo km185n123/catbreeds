@@ -1,7 +1,10 @@
+import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 
 class BiographySection extends StatelessWidget {
-  const BiographySection({super.key});
+  final CatBreed breed;
+
+  const BiographySection({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class BiographySection extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              'History & Biography',
+              'Description',
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -26,7 +29,7 @@ class BiographySection extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         Text(
-          'The Bengal is a domestic cat breed resulting from crossing a domestic feline with an Asian leopard cat (Prionailurus bengalensis). The name comes from the leopard cat\'s scientific name.\n\nBengals are known for their wild appearance, with large spots, rosettes, and a light/white belly, and a body structure reminiscent of the leopard cat.',
+          breed.description,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             height: 1.5,
             color: Theme.of(context).colorScheme.onSurfaceVariant,

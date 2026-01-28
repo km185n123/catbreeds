@@ -1,8 +1,11 @@
 import 'package:catbreeds/features/detailbreed/presentation/widgets/tag.dart';
+import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 
 class BreedHeadline extends StatelessWidget {
-  const BreedHeadline({super.key});
+  final CatBreed breed;
+
+  const BreedHeadline({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +17,20 @@ class BreedHeadline extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Bengal',
+                breed.name,
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, // Always white on image
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 8),
               Row(
                 children: [
-                  Tag(text: 'ANCIENT BREED', isBlue: true),
-                  const SizedBox(width: 8),
-                  Tag(text: 'SHORTHAIR', isBlue: false),
+                  Tag(text: breed.origin.toUpperCase(), isBlue: true),
+                  if (breed.lifeSpan != null) ...[
+                    const SizedBox(width: 8),
+                    Tag(text: '${breed.lifeSpan} YEARS', isBlue: false),
+                  ],
                 ],
               ),
             ],

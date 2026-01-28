@@ -1,27 +1,30 @@
 import 'package:catbreeds/features/detailbreed/presentation/widgets/stat_card.dart';
+import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 
 class StatsRow extends StatelessWidget {
-  const StatsRow({super.key});
+  final CatBreed breed;
+
+  const StatsRow({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: const [
+      children: [
         Expanded(
           child: StatCard(
             title: 'ORIGIN',
-            value: 'United States',
-            subtitle: '+ Ancient Lineage',
+            value: breed.origin,
+            subtitle: 'Country of Origin',
             icon: Icons.public,
           ),
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         Expanded(
           child: StatCard(
             title: 'INTELLIGENCE',
-            value: 'High',
-            subtitle: '+ Quick Learner',
+            value: '${breed.intelligence} / 5',
+            subtitle: 'Cognitive Level',
             icon: Icons.psychology,
           ),
         ),

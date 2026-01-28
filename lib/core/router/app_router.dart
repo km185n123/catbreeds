@@ -1,4 +1,5 @@
 import 'package:catbreeds/features/detailbreed/presentation/detail_screen.dart';
+import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_bloc.dart';
 import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_event.dart';
 import 'package:catbreeds/features/landing/presentation/landing_screen.dart';
@@ -18,6 +19,12 @@ final appRouter = GoRouter(
         child: const LandingScreen(),
       ),
     ),
-    GoRoute(path: '/detail', builder: (context, state) => const DetailScreen()),
+    GoRoute(
+      path: '/detail',
+      builder: (context, state) {
+        final breed = state.extra as CatBreed;
+        return DetailScreen(breed: breed);
+      },
+    ),
   ],
 );

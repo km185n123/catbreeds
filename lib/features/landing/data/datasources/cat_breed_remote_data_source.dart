@@ -1,6 +1,4 @@
-// lib/features/landing/data/datasources/cat_breed_remote_datasource.dart
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 import 'package:catbreeds/features/landing/data/models/cat_breed_model.dart';
 import 'package:catbreeds/core/error/failure.dart';
@@ -10,28 +8,19 @@ abstract class CatBreedRemoteDataSource {
 }
 
 class CatBreedRemoteDataSourceImpl implements CatBreedRemoteDataSource {
-  final http.Client client;
-  final String baseUrl;
-  final String apiKey;
+  final Dio dio;
 
-  CatBreedRemoteDataSourceImpl({
-    required this.client,
-    required this.baseUrl,
-    required this.apiKey,
-  });
+  CatBreedRemoteDataSourceImpl({required this.dio});
 
   @override
   Future<List<CatBreedModel>> getCatBreeds() async {
-    final response = await client.get(
-      Uri.parse(baseUrl),
-      headers: {'Content-Type': 'application/json', 'x-api-key': apiKey},
-    );
+    final response = await dio.get('/breeds');
 
     if (response.statusCode != 200) {
       throw const ServerFailure('Failed to load cat breeds');
     }
 
-    final List<dynamic> decodedJson = json.decode(response.body);
+    final List<dynamic> decodedJson = response.data;
     return decodedJson.map((json) => CatBreedModel.fromJson(json)).toList();
   }
 }

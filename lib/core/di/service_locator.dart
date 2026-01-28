@@ -3,9 +3,10 @@ import 'package:catbreeds/features/landing/data/datasources/cat_breed_remote_dat
 import 'package:catbreeds/features/landing/data/repositories/cat_breed_repository_impl.dart';
 import 'package:catbreeds/features/landing/domain/repositories/cat_breed_repository.dart';
 import 'package:catbreeds/features/landing/domain/usecases/get_cat_breeds.dart';
+import 'package:catbreeds/core/network/dio_client.dart';
 import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 
 final getIt = GetIt.instance;
 
@@ -14,15 +15,12 @@ void setupServiceLocator(AppConfig config) {
   getIt.registerSingleton<AppConfig>(config);
 
   // External
-  getIt.registerLazySingleton(() => http.Client());
+  getIt.registerLazySingleton<DioClient>(() => DioClient(config: getIt()));
+  getIt.registerLazySingleton<Dio>(() => getIt<DioClient>().dio);
 
   // Data sources
   getIt.registerLazySingleton<CatBreedRemoteDataSource>(
-    () => CatBreedRemoteDataSourceImpl(
-      client: getIt(),
-      baseUrl: config.baseUrl,
-      apiKey: config.apiKey,
-    ),
+    () => CatBreedRemoteDataSourceImpl(dio: getIt()),
   );
 
   // Repositories

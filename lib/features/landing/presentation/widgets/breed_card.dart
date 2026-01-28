@@ -1,28 +1,24 @@
+import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BreedCard extends StatelessWidget {
-  final String name;
-  final String origin;
-  final int intelligence;
-  final String imageUrl; // puede ser URL o asset
+  final CatBreed breed;
 
-  const BreedCard({
-    super.key,
-    required this.name,
-    required this.origin,
-    required this.intelligence,
-    required this.imageUrl,
-  });
+  const BreedCard({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {
+    final String imageUrl = breed.referenceImageId != null
+        ? 'https://cdn2.thecatapi.com/images/${breed.referenceImageId}.jpg'
+        : 'assets/images/gato_bengala.jpg';
+
     final ImageProvider imageProvider = imageUrl.startsWith('http')
         ? NetworkImage(imageUrl)
         : AssetImage(imageUrl) as ImageProvider;
 
     return GestureDetector(
-      onTap: () => context.push('/detail', extra: name),
+      onTap: () => context.push('/detail', extra: breed),
       child: Container(
         height: 400,
         decoration: BoxDecoration(
@@ -61,7 +57,7 @@ class BreedCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        origin,
+                        breed.origin,
                         style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 12,
@@ -72,7 +68,7 @@ class BreedCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    name,
+                    breed.name,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 32,
@@ -94,7 +90,7 @@ class BreedCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        '$intelligence / 5',
+                        '${breed.intelligence} / 5',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -107,7 +103,7 @@ class BreedCard extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(2),
                     child: LinearProgressIndicator(
-                      value: intelligence / 5,
+                      value: breed.intelligence / 5,
                       backgroundColor: Colors.white24,
                       color: Theme.of(context).colorScheme.primary,
                       minHeight: 4,

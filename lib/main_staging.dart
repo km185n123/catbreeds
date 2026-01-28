@@ -3,7 +3,7 @@ import 'package:catbreeds/main.dart';
 
 void main() {
   final config = AppConfig(
-    baseUrl: 'https://api.thecatapi.com/v1/breeds',
+    baseUrl: 'https://api.thecatapi.com/v1',
     appName: 'CatBreeds Staging',
     apiKey:
         'live_99Qe4Ppj34NdplyLW67xCV7Ds0oSLKGgcWWYnSzMJY9C0QOu0HUR4azYxWkyW2nr',

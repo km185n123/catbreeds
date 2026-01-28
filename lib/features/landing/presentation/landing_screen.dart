@@ -43,18 +43,10 @@ class LandingScreen extends StatelessWidget {
                           );
                         }
                         final breed = state.breeds[index - 1];
-                        final String imageUrl = breed.referenceImageId != null
-                            ? 'https://cdn2.thecatapi.com/images/${breed.referenceImageId}.jpg'
-                            : 'assets/images/gato_bengala.jpg';
 
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 24),
-                          child: BreedCard(
-                            name: breed.name,
-                            origin: breed.origin,
-                            intelligence: breed.intelligence,
-                            imageUrl: imageUrl,
-                          ),
+                          child: BreedCard(breed: breed),
                         );
                       },
                     );

@@ -1,11 +1,17 @@
+import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 
 class TemperamentSection extends StatelessWidget {
-  const TemperamentSection({super.key});
+  final CatBreed breed;
+
+  const TemperamentSection({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {
-    final temperaments = ['Active', 'Playful', 'Social', 'Curious'];
+    final temperaments = breed.temperament
+        .split(',')
+        .map((e) => e.trim())
+        .toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

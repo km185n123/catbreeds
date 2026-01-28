@@ -2,6 +2,16 @@
 
 A modern Flutter application for exploring and discovering cat breeds, built with Clean Architecture and best practices.
 
+## 📸 Screenshots
+
+| Landing (Dark) | Detail (Dark) | Error State |
+|:---:|:---:|:---:|
+| <img src="assets/screenshots/3.jpg" width="200" /> | <img src="assets/screenshots/1.jpg" width="200" /> | <img src="assets/screenshots/2.jpg" width="200" /> |
+
+| Landing (Light) | Detail (Light) |
+|:---:|:---:|
+| <img src="assets/screenshots/4.jpg" width="200" /> | <img src="assets/screenshots/5.jpg" width="200" /> |
+
 ## 🏗 Architecture
 
 This project follows **Clean Architecture** principles to ensure separation of concerns, scalability, and testability. It is structured using a **Feature-First** approach.

@@ -1,3 +1,5 @@
+import 'package:catbreeds/core/config/app_config.dart';
+import 'package:catbreeds/core/di/service_locator.dart';
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +13,7 @@ class BreedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String imageUrl = breed.referenceImageId != null
-        ? 'https://cdn2.thecatapi.com/images/${breed.referenceImageId}.jpg'
+        ? '${getIt<AppConfig>().imageBaseUrl}${breed.referenceImageId}.jpg'
         : 'assets/images/gato_bengala.jpg';
 
     final ImageProvider imageProvider = imageUrl.startsWith('http')

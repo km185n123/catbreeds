@@ -7,6 +7,7 @@ void main() {
     appName: 'CatBreeds Staging',
     apiKey:
         'live_99Qe4Ppj34NdplyLW67xCV7Ds0oSLKGgcWWYnSzMJY9C0QOu0HUR4azYxWkyW2nr',
+    imageBaseUrl: 'https://cdn2.thecatapi.com/images/',
     environment: AppEnvironment.staging,
   );
   mainCommon(config);

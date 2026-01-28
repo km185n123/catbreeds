@@ -34,7 +34,6 @@ class LandingScreen extends StatelessWidget {
                   if (state is CatBreedsLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is CatBreedsError) {
-                  } else if (state is CatBreedsError) {
                     final isNetworkError = state.failure is ConnectionFailure;
                     final l10n = AppLocalizations.of(context)!;
                     return FeedbackMessage(

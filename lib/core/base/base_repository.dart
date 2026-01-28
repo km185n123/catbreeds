@@ -13,18 +13,11 @@ abstract class BaseRepository {
       if (e is DioException) {
         if (e.type == DioExceptionType.connectionTimeout ||
             e.type == DioExceptionType.receiveTimeout ||
-            e.type == DioExceptionType.connectionError) {
-          return const Left(
-            ConnectionFailure(
-              'No internet connection. Please check your network settings.',
-            ),
-          );
+            e.type == DioExceptionType.connectionError ||
+            e.type == DioExceptionType.unknown) {
+          return const Left(ConnectionFailure('connectionLostMessage'));
         } else if (e.type == DioExceptionType.badResponse) {
-          return const Left(
-            ServerFailure(
-              'Server is currently unavailable. Please try again later.',
-            ),
-          );
+          return const Left(ServerFailure('serverErrorMessage'));
         }
       }
       return Left(ServerFailure(e.toString()));

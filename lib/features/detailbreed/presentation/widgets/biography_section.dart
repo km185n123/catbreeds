@@ -1,4 +1,5 @@
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class BiographySection extends StatelessWidget {
@@ -20,7 +21,7 @@ class BiographySection extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              'Description',
+              AppLocalizations.of(context)!.description,
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),

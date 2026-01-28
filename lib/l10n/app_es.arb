@@ -1,0 +1,19 @@
+{
+  "appTitle": "CatBreeds",
+  "discoverBreeds": "DESCUBRIR RAZAS",
+  "searchHint": "Buscar razas...",
+  "breedProfile": "Perfil de Raza",
+  "temperament": "Temperamento",
+  "description": "Descripción",
+  "origin": "Origen",
+  "intelligence": "Inteligencia",
+  "years": "Años",
+  "retry": "Reintentar",
+  "connectionLost": "Conexión Perdida",
+  "connectionLostMessage": "No hay conexión a internet. Por favor verifica tu red.",
+  "serverError": "Algo salió mal",
+  "serverErrorMessage": "El servidor no está disponible. Intenta más tarde.",
+  "genericError": "¡Ups! Algo salió mal",
+  "moreN": "+{count}",
+  "exploreMore": "Explorar más"
+}

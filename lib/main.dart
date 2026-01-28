@@ -2,7 +2,9 @@ import 'package:catbreeds/core/config/app_config.dart';
 import 'package:catbreeds/core/router/app_router.dart';
 import 'package:catbreeds/core/theme/app_theme.dart';
 import 'package:catbreeds/core/di/service_locator.dart';
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void mainCommon(AppConfig config) {
   setupServiceLocator(config);
@@ -21,6 +23,13 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
       routerConfig: appRouter,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }

@@ -1,0 +1,19 @@
+{
+  "appTitle": "CatBreeds",
+  "discoverBreeds": "DISCOVER BREEDS",
+  "searchHint": "Search breeds...",
+  "breedProfile": "Breed Profile",
+  "temperament": "Temperament",
+  "description": "Description",
+  "origin": "Origin",
+  "intelligence": "Intelligence",
+  "years": "Years",
+  "retry": "Retry",
+  "connectionLost": "Connection Lost",
+  "connectionLostMessage": "No internet connection. Please check your network settings.",
+  "serverError": "Something went wrong",
+  "serverErrorMessage": "Server is currently unavailable. Please try again later.",
+  "genericError": "Oops! Something went wrong",
+  "moreN": "+{count}",
+  "exploreMore": "Explore more"
+}

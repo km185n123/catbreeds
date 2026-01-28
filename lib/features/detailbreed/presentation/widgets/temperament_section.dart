@@ -1,4 +1,5 @@
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class TemperamentSection extends StatelessWidget {
@@ -25,7 +26,7 @@ class TemperamentSection extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              'Temperament',
+              AppLocalizations.of(context)!.temperament,
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),

@@ -1,4 +1,5 @@
 import 'package:catbreeds/features/detailbreed/presentation/widgets/breed_headline.dart';
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -66,7 +67,7 @@ class HeaderDetail extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: Text(
-                      'Breed Profile',
+                      AppLocalizations.of(context)!.breedProfile,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

@@ -8,6 +8,7 @@ import 'package:catbreeds/features/landing/presentation/widgets/search_bar.dart'
     as custom;
 import 'package:catbreeds/features/landing/presentation/widgets/section_header.dart';
 import 'package:catbreeds/features/landing/presentation/widgets/top_bar.dart';
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,12 +34,16 @@ class LandingScreen extends StatelessWidget {
                   if (state is CatBreedsLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is CatBreedsError) {
+                  } else if (state is CatBreedsError) {
                     final isNetworkError = state.failure is ConnectionFailure;
+                    final l10n = AppLocalizations.of(context)!;
                     return FeedbackMessage(
                       title: isNetworkError
-                          ? 'Connection Lost'
-                          : 'Oops! Something went wrong',
-                      message: state.failure.message,
+                          ? l10n.connectionLost
+                          : l10n.genericError,
+                      message: isNetworkError
+                          ? l10n.connectionLostMessage
+                          : l10n.serverErrorMessage,
                       type: isNetworkError
                           ? FeedbackType.network
                           : FeedbackType.server,
@@ -52,9 +57,13 @@ class LandingScreen extends StatelessWidget {
                       itemCount: state.breeds.length + 1,
                       itemBuilder: (context, index) {
                         if (index == 0) {
-                          return const Padding(
-                            padding: EdgeInsets.only(bottom: 16),
-                            child: SectionHeader(title: 'DISCOVER BREEDS'),
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: SectionHeader(
+                              title: AppLocalizations.of(
+                                context,
+                              )!.discoverBreeds,
+                            ),
                           );
                         }
                         final breed = state.breeds[index - 1];

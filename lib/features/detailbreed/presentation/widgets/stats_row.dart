@@ -1,4 +1,5 @@
 import 'package:catbreeds/features/detailbreed/presentation/widgets/stat_card.dart';
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:flutter/material.dart';
 
@@ -13,18 +14,22 @@ class StatsRow extends StatelessWidget {
       children: [
         Expanded(
           child: StatCard(
-            title: 'ORIGIN',
+            title: AppLocalizations.of(context)!.origin.toUpperCase(),
             value: breed.origin,
-            subtitle: 'Country of Origin',
+            subtitle: AppLocalizations.of(
+              context,
+            )!.origin, // Assuming subtitle reuse or similar meaning
             icon: Icons.public,
           ),
         ),
         const SizedBox(width: 16),
         Expanded(
           child: StatCard(
-            title: 'INTELLIGENCE',
+            title: AppLocalizations.of(context)!.intelligence.toUpperCase(),
             value: '${breed.intelligence} / 5',
-            subtitle: 'Cognitive Level',
+            subtitle: AppLocalizations.of(
+              context,
+            )!.intelligence, // Assuming similar meaning
             icon: Icons.psychology,
           ),
         ),

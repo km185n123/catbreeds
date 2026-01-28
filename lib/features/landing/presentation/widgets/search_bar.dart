@@ -1,3 +1,4 @@
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
@@ -7,7 +8,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: 'Search cat breeds...',
+        hintText: AppLocalizations.of(context)!.searchHint,
         hintStyle: TextStyle(
           color: Theme.of(context).colorScheme.onSurfaceVariant,
         ),

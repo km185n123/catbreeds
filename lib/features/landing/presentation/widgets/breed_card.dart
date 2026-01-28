@@ -1,4 +1,5 @@
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -79,8 +80,10 @@ class BreedCard extends StatelessWidget {
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      const Text(
-                        'INTELLIGENCE',
+                      Text(
+                        AppLocalizations.of(
+                          context,
+                        )!.intelligence.toUpperCase(),
                         style: TextStyle(
                           color: Colors.white70,
                           fontSize: 10,
@@ -112,8 +115,8 @@ class BreedCard extends StatelessWidget {
                   const SizedBox(height: 24),
                   Row(
                     children: [
-                      const Text(
-                        'Explore more',
+                      Text(
+                        AppLocalizations.of(context)!.exploreMore,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,

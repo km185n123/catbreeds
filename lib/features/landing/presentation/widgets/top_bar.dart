@@ -1,3 +1,4 @@
+import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class TopBar extends StatelessWidget {
@@ -26,7 +27,7 @@ class TopBar extends StatelessWidget {
               ),
               const SizedBox(width: 12),
               Text(
-                'Cat Explorer',
+                AppLocalizations.of(context)!.appTitle,
                 style: Theme.of(
                   context,
                 ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),

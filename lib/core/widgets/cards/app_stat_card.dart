@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class StatCard extends StatelessWidget {
+class AppStatCard extends StatelessWidget {
   final String title;
   final String value;
   final String subtitle;
   final IconData icon;
 
-  const StatCard({
+  const AppStatCard({
     required this.title,
     required this.value,
     required this.subtitle,
@@ -55,9 +55,7 @@ class StatCard extends StatelessWidget {
             subtitle,
             style: TextStyle(
               fontSize: 10,
-              color: Theme.of(
-                context,
-              ).colorScheme.primary, // Greenish in ref, but primary fits better
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
         ],

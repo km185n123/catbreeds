@@ -1,5 +1,6 @@
 import 'package:catbreeds/core/config/app_config.dart';
 import 'package:catbreeds/core/di/service_locator.dart';
+import 'package:catbreeds/core/router/app_routes.dart';
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class BreedCard extends StatelessWidget {
         : AssetImage(imageUrl) as ImageProvider;
 
     return GestureDetector(
-      onTap: () => context.push('/detail', extra: breed),
+      onTap: () => context.push(AppRoutes.detail, extra: breed),
       child: Container(
         height: 400,
         decoration: BoxDecoration(

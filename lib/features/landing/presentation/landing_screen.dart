@@ -6,7 +6,7 @@ import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_state.da
 import 'package:catbreeds/features/landing/presentation/widgets/breed_card.dart';
 import 'package:catbreeds/features/landing/presentation/widgets/search_bar.dart'
     as custom;
-import 'package:catbreeds/features/landing/presentation/widgets/section_header.dart';
+import 'package:catbreeds/core/widgets/text/section_header.dart';
 import 'package:catbreeds/features/landing/presentation/widgets/top_bar.dart';
 import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';

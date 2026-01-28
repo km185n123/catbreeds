@@ -1,3 +1,4 @@
+import 'package:catbreeds/core/router/app_routes.dart';
 import 'package:catbreeds/features/splash/presentation/widgets/splash_content.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.go('/landing');
+        context.go(AppRoutes.landing);
       }
     });
   }

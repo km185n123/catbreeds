@@ -1,3 +1,4 @@
+import 'package:catbreeds/core/widgets/common/app_chip.dart';
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -37,21 +38,7 @@ class TemperamentSection extends StatelessWidget {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: temperaments
-              .map(
-                (temp) => Chip(
-                  label: Text(temp),
-                  labelStyle: const TextStyle(fontSize: 12),
-                  backgroundColor: Theme.of(
-                    context,
-                  ).colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-                  side: BorderSide.none,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              )
-              .toList(),
+          children: temperaments.map((temp) => AppChip(label: temp)).toList(),
         ),
       ],
     );

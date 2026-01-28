@@ -8,3 +8,12 @@ abstract class CatBreedsEvent extends Equatable {
 }
 
 class CatBreedsStarted extends CatBreedsEvent {}
+
+class CatBreedsSearch extends CatBreedsEvent {
+  final String query;
+
+  const CatBreedsSearch(this.query);
+
+  @override
+  List<Object> get props => [query];
+}

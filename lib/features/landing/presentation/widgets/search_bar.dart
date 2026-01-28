@@ -1,5 +1,8 @@
+import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_bloc.dart';
+import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_event.dart';
 import 'package:catbreeds/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
@@ -7,6 +10,9 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: (value) {
+        context.read<CatBreedsBloc>().add(CatBreedsSearch(value));
+      },
       decoration: InputDecoration(
         hintText: AppLocalizations.of(context)!.searchHint,
         hintStyle: TextStyle(

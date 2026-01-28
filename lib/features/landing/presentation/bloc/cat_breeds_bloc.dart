@@ -17,7 +17,7 @@ class CatBreedsBloc extends Bloc<CatBreedsEvent, CatBreedsState> {
     emit(CatBreedsLoading());
     final result = await getCatBreeds();
     result.fold(
-      (failure) => emit(CatBreedsError(failure.message)),
+      (failure) => emit(CatBreedsError(failure)),
       (breeds) => emit(CatBreedsLoaded(breeds)),
     );
   }

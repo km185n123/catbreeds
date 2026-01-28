@@ -1,4 +1,7 @@
+import 'package:catbreeds/core/error/failure.dart';
+import 'package:catbreeds/core/widgets/feedback/feedback_message.dart';
 import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_bloc.dart';
+import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_event.dart';
 import 'package:catbreeds/features/landing/presentation/bloc/cat_breeds_state.dart';
 import 'package:catbreeds/features/landing/presentation/widgets/breed_card.dart';
 import 'package:catbreeds/features/landing/presentation/widgets/search_bar.dart'
@@ -30,7 +33,19 @@ class LandingScreen extends StatelessWidget {
                   if (state is CatBreedsLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is CatBreedsError) {
-                    return Center(child: Text('Error: ${state.message}'));
+                    final isNetworkError = state.failure is ConnectionFailure;
+                    return FeedbackMessage(
+                      title: isNetworkError
+                          ? 'Connection Lost'
+                          : 'Oops! Something went wrong',
+                      message: state.failure.message,
+                      type: isNetworkError
+                          ? FeedbackType.network
+                          : FeedbackType.server,
+                      onRetry: () {
+                        context.read<CatBreedsBloc>().add(CatBreedsStarted());
+                      },
+                    );
                   } else if (state is CatBreedsLoaded) {
                     return ListView.builder(
                       padding: const EdgeInsets.symmetric(horizontal: 24),

@@ -1,3 +1,4 @@
+import 'package:catbreeds/core/error/failure.dart';
 import 'package:catbreeds/features/landing/domain/entities/cat_breed.dart';
 import 'package:equatable/equatable.dart';
 
@@ -22,10 +23,10 @@ class CatBreedsLoaded extends CatBreedsState {
 }
 
 class CatBreedsError extends CatBreedsState {
-  final String message;
+  final Failure failure;
 
-  const CatBreedsError(this.message);
+  const CatBreedsError(this.failure);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [failure];
 }

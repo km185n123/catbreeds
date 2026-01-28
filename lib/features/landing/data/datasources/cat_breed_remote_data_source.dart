@@ -10,19 +10,21 @@ abstract class CatBreedRemoteDataSource {
 }
 
 class CatBreedRemoteDataSourceImpl implements CatBreedRemoteDataSource {
-  static const String _baseUrl = 'https://api.thecatapi.com/v1/breeds';
-  static const String _apiKey =
-      'live_99Qe4Ppj34NdplyLW67xCV7Ds0oSLKGgcWWYnSzMJY9C0QOu0HUR4azYxWkyW2nr';
-
   final http.Client client;
+  final String baseUrl;
+  final String apiKey;
 
-  CatBreedRemoteDataSourceImpl({required this.client});
+  CatBreedRemoteDataSourceImpl({
+    required this.client,
+    required this.baseUrl,
+    required this.apiKey,
+  });
 
   @override
   Future<List<CatBreedModel>> getCatBreeds() async {
     final response = await client.get(
-      Uri.parse(_baseUrl),
-      headers: {'Content-Type': 'application/json', 'x-api-key': _apiKey},
+      Uri.parse(baseUrl),
+      headers: {'Content-Type': 'application/json', 'x-api-key': apiKey},
     );
 
     if (response.statusCode != 200) {
